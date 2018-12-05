@@ -1587,7 +1587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a132ab0437f874a95febf7770e7c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gotoposition: {fileID: 0}
+  gotoposition: {fileID: 1112666325086410, guid: ed3fcc091397ed34c82a9b98011a82f8,
+    type: 2}
 --- !u!135 &135486863998402054
 SphereCollider:
   m_ObjectHideFlags: 1
