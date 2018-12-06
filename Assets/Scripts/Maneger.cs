@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Maneger : MonoBehaviour
@@ -12,6 +13,7 @@ public class Maneger : MonoBehaviour
 	public Button Elevador, BotaoElevador, BotaoMetro;
 	public GameObject Metro;
 	public Vector3[] Levelposition;
+	public GameObject PlayerPrefab;
 
 	public void OnLights()
 	{
@@ -19,33 +21,35 @@ public class Maneger : MonoBehaviour
 		{
 			objs.SetActive(true);
 		}
-		foreach (var spam in ZombiSpans1)
-		{
-			Instantiate(ZombiPrefab, spam.transform);
-		}
 		BotaoElevador.interactable = true;
 		BotaoMetro.interactable = true;
 		ReliseZombis();
 	}
 
-	public void ChamaMetro(int Level)
+	public void ChamaMetro()
 	{
-		Metro.transform.position =
-			Vector3.Lerp(Metro.transform.position, Levelposition[Level], Time.deltaTime);
-		ReliseZombis();
+		Metro.transform.position = Vector3.Lerp(Metro.transform.position, Levelposition[0], Time.deltaTime);
+		InvokeRepeating("ChamaMetro", 1,0.01f);
+		if (Vector3.Distance(transform.position, Levelposition[0]) < 0.1f)
+			CancelInvoke("ChamaMetro");
 	}
 
-	public void VazaMetro(int Level)
+	public void VazaMetro()
 	{
 		Metro.transform.position =
-			Vector3.Lerp(Metro.transform.position, Levelposition[Level], Time.deltaTime);
+			Vector3.Lerp(Metro.transform.position, Levelposition[1], Time.deltaTime);
+		InvokeRepeating("VazaMetro", 1,0.01f);
+		if (Vector3.Distance(transform.position, Levelposition[1]) < 0.1f)
+			CancelInvoke("VazaMetro");
 	}
 
 	public void ReliseZombis()
 	{
 		foreach (var spam in ZombiSpans1)
 		{
-			Instantiate(ZombiPrefab, spam.transform);
+			var zomb = (GameObject) Instantiate(ZombiPrefab, spam.transform.position, Quaternion.identity);
+			zomb.GetComponent<IAcontrol>().gotoposition = PlayerPrefab;
+			
 		}
 	}
 
