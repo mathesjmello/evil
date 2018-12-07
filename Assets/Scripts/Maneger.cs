@@ -28,19 +28,14 @@ public class Maneger : MonoBehaviour
 
 	public void ChamaMetro()
 	{
-		Metro.transform.position = Vector3.Lerp(Metro.transform.position, Levelposition[0], Time.deltaTime);
-		InvokeRepeating("ChamaMetro", 1,0.01f);
-		if (Vector3.Distance(transform.position, Levelposition[0]) < 0.1f)
-			CancelInvoke("ChamaMetro");
+		
+		InvokeRepeating("AndaMetro", 1,0.01f);
+		
 	}
 
 	public void VazaMetro()
 	{
-		Metro.transform.position =
-			Vector3.Lerp(Metro.transform.position, Levelposition[1], Time.deltaTime);
-		InvokeRepeating("VazaMetro", 1,0.01f);
-		if (Vector3.Distance(transform.position, Levelposition[1]) < 0.1f)
-			CancelInvoke("VazaMetro");
+		InvokeRepeating("SomeMetro", 1,0.01f);
 	}
 
 	public void ReliseZombis()
@@ -57,5 +52,18 @@ public class Maneger : MonoBehaviour
 	{
 		Elevador.interactable = true;
 		ReliseZombis();
+	}
+
+	private void AndaMetro()
+	{
+		Metro.transform.position = Vector3.Lerp(Metro.transform.position, Levelposition[0], Time.deltaTime);
+		if (Vector3.Distance(transform.position, Levelposition[0]) < 0.1f)
+			CancelInvoke("AndaMetro");
+	}
+	private void SomeMetro()
+	{
+		Metro.transform.position = Vector3.Lerp(Metro.transform.position, Levelposition[1], Time.deltaTime);
+		if (Vector3.Distance(transform.position, Levelposition[1]) < 0.1f)
+			CancelInvoke("SomeMetro");
 	}
 }

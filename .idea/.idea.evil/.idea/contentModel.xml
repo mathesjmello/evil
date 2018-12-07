@@ -364,6 +364,7 @@
             </e>
           </e>
         </e>
+        <e p="SubWay.cs" t="Include" />
       </e>
       <e p="evil.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />
