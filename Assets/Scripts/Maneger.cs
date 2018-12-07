@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Maneger : MonoBehaviour
@@ -14,6 +15,7 @@ public class Maneger : MonoBehaviour
 	public GameObject Metro;
 	public Vector3[] Levelposition;
 	public GameObject PlayerPrefab;
+	public GameObject TelaEnd;
 
 	public void OnLights()
 	{
@@ -64,6 +66,27 @@ public class Maneger : MonoBehaviour
 	{
 		Metro.transform.position = Vector3.Lerp(Metro.transform.position, Levelposition[1], Time.deltaTime);
 		if (Vector3.Distance(transform.position, Levelposition[1]) < 0.1f)
+		{
 			CancelInvoke("SomeMetro");
+			Invoke("EndGame",0.2f);
+		}
+			
 	}
+
+	public void ReloadScene()
+	{
+		Time.timeScale = 1;
+		SceneManager.LoadScene(0);
+	}
+
+	public void Quit()
+	{
+		Application.Quit();
+	}
+
+	void EndGame()
+	{
+		TelaEnd.SetActive(true);
+	}
+	
 }
