@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\dada\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_evil.-1320953921.00" t="ExcludeRecursive" />
-    <e p="D:\coisasMatheus\5semestre\prog\SubEvil-master\evil" t="IncludeRecursive">
+    <e p="C:\Users\Matheus\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_evil.-623115326.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Matheus\Desktop\evil\evil" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -305,6 +305,7 @@
           <e p="Elevator.cs" t="Include" />
           <e p="IAcontrol.cs" t="Include" />
           <e p="Maneger.cs" t="Include" />
+          <e p="MenuManeger.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
           <e p="Respawm.cs" t="Include" />
           <e p="Rotation.cs" t="Include" />

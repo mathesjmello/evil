@@ -37,6 +37,7 @@ public class Maneger : MonoBehaviour
 
 	public void VazaMetro()
 	{
+		Invoke("EndGame",2f);
 		InvokeRepeating("SomeMetro", 1,0.01f);
 	}
 
@@ -64,11 +65,12 @@ public class Maneger : MonoBehaviour
 	}
 	private void SomeMetro()
 	{
+		
 		Metro.transform.position = Vector3.Lerp(Metro.transform.position, Levelposition[1], Time.deltaTime);
 		if (Vector3.Distance(transform.position, Levelposition[1]) < 0.1f)
 		{
 			CancelInvoke("SomeMetro");
-			Invoke("EndGame",0.2f);
+			
 		}
 			
 	}
@@ -76,12 +78,19 @@ public class Maneger : MonoBehaviour
 	public void ReloadScene()
 	{
 		Time.timeScale = 1;
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	public void NextScene()
+	{
+		Time.timeScale = 1;
+		SceneManager.LoadScene("Level0");
 	}
 
 	public void Quit()
 	{
-		Application.Quit();
+		Time.timeScale = 1;
+		SceneManager.LoadScene("menu");
 	}
 
 	void EndGame()
